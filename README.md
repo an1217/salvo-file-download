@@ -1,0 +1,1 @@
+The environment variables rustclient specifies the location where the download is from the server, and rustserver specifies the server path to be timed
