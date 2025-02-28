@@ -1,0 +1,27 @@
+[package]
+name = "axum-server"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+salvo = "0.72"
+tokio = { version = "1.0", features = ["full"] }
+aes-gcm = "0.10"
+serde = { version = "1.0", features = ["derive"] }
+rand = "0.8"
+futures = "0.3"
+hex = "0.4"
+async-stream = "0.3.6"
+encrypted_id = "0.1.5"
+zip = "0.6"
+walkdir = "2.5.0"
+dotenv = "0.15.0"
+chrono = "0.4.39"
+flate2 = { version = "1.0", features = ["zlib"] } 
+job_scheduler = "1.2.1"
+tokio-cron-scheduler = "0.13.0"
+time = { version = "0.3.36", features = ["macros"] }
+tracing = "0.1"
+tracing-appender = "0.2.3"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "time"] }
+windows-service = "0.8.0"
