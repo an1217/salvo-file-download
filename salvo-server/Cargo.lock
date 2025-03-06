@@ -122,33 +122,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ace50bade8e6234aa140d9a2f552bbee1db4d353f69b8217bc503490fc1a9f26"
 
 [[package]]
-name = "axum-server"
-version = "0.1.0"
-dependencies = [
- "aes-gcm",
- "async-stream",
- "chrono",
- "dotenv",
- "encrypted_id",
- "flate2",
- "futures",
- "hex",
- "job_scheduler",
- "rand 0.8.5",
- "salvo",
- "serde",
- "time 0.3.37",
- "tokio",
- "tokio-cron-scheduler",
- "tracing",
- "tracing-appender",
- "tracing-subscriber",
- "walkdir",
- "windows-service",
- "zip",
-]
-
-[[package]]
 name = "backtrace"
 version = "0.3.74"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1971,6 +1944,33 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn 2.0.98",
+]
+
+[[package]]
+name = "salvo-server"
+version = "0.1.0"
+dependencies = [
+ "aes-gcm",
+ "async-stream",
+ "chrono",
+ "dotenv",
+ "encrypted_id",
+ "flate2",
+ "futures",
+ "hex",
+ "job_scheduler",
+ "rand 0.8.5",
+ "salvo",
+ "serde",
+ "time 0.3.37",
+ "tokio",
+ "tokio-cron-scheduler",
+ "tracing",
+ "tracing-appender",
+ "tracing-subscriber",
+ "walkdir",
+ "windows-service",
+ "zip",
 ]
 
 [[package]]

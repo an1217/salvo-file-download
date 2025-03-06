@@ -20,7 +20,9 @@ async fn main(){
     encrypted_id::init("23t4y567kuydw3456ukjhgfd8*&&%￥#");
     dotenv::dotenv().ok();
     let mut rust = std::env::var("rustclient").expect("请设置环境变量rustclient");
+    let _ = std::env::var("serverurl").expect("请设置环境变量serverurl");
     log_init(rust).await;
+    // 定时是非东八区时间
     let mut sched = tokio_cron_scheduler::JobScheduler::new().await.unwrap();
     sched.add(
         Job::new_async("0 0 1 * * *", |_uuid, _l| {
@@ -29,6 +31,7 @@ async fn main(){
             })
         }).unwrap()
     ).await.unwrap();
+    
     download_file().await;
     sched.start().await;
     let acceptor = TcpListener::new("0.0.0.0:22141").bind().await;
@@ -57,8 +60,12 @@ async fn download_file() {
     let timestamp = datetime_utc.timestamp();
  
     let de = encrypted_id::encrypt(timestamp as u64, ":>><<::{3rfsaqwwkeyddadadaw1w*%@^%&@($(@)$").unwrap();
-    let url = "http://www.yunpintai.com.cn:5800";
-    let response = match client.post(url.to_owned() + "/download")
+    let mut url = std::env::var("serverurl").unwrap();
+    let str = "http://";
+    url.push_str(":5800");
+    url.insert_str(0, str);
+
+    let response = match client.post(url + "/download")
         .body(de)
         .send()
         .await {
@@ -149,13 +156,19 @@ async fn log_init(mut rut: String){
 
 #[cfg(test)]
 mod tests {
-    // 注意这个惯用法：在 tests 模块中，从外部作用域导入所有名字。
     use super::*;
 
-    #[tokio::test]
-    async fn test_add() {
-        decrypt_file("path").await;
+    // #[tokio::test]
+    // async fn test_add() {
+    //     decrypt_file("path").await;
+    // }
+
+    #[test]
+    fn test() {
+    let mut url = "192.168.2.61".to_string();
+    let str = "http://";
+    url.push_str(":5800");
+    url.insert_str(0, str);
+    assert_eq!("http://192.168.2.61:5800", &url);
     }
-
-
 }

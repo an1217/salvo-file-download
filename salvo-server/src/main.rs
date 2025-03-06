@@ -40,6 +40,7 @@ async fn main() {
     
     encrypted_id::init("23t4y567kuydw3456ukjhgfd8*&&%￥#");
     let mut sched = tokio_cron_scheduler::JobScheduler::new().await.unwrap();
+    // 非东八区时间
     sched.add(
         Job::new_async("0 0 0 * * *", |_uuid, _l| {
             Box::pin(async move {
